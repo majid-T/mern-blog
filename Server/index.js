@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-require('dotenv').config();
+const result = require('dotenv').config();
 const mongoose = require('mongoose');
 
+console.log(result);
 //DB Connection
 mongoose
     .connect(process.env.DB_URL,{
