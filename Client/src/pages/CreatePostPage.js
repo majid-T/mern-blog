@@ -1,6 +1,6 @@
-import React from 'react';
+import React ,{useState,useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
-import From from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
@@ -8,9 +8,16 @@ function CreatePost(props){
     const [formData,setFormData] = useState({title:'',body:'',author:''});
 
     const handleSubmit = async (e)=>{
+        console.log('Submit clicked');
         e.preventDefault();
         await axios
-        .post('http://localhost:5000/api/posts/create')
+        .post('http://localhost:5000/api/posts/create',
+            {
+                title: formData.title,
+                body: formData.body,
+                author: formData.author
+            }
+        )
         .then((response)=>console.log(response))
         .catch((err)=>console.log(err));
         props.history.push('/');
@@ -35,6 +42,7 @@ function CreatePost(props){
                     <Form.Control type='text' placeholder='Post Author' value={formData.author} 
                     onChange={(e)=> setFormData({...formData,author:e.target.value})}/>
                 </Form.Group>
+                <Button type='submit' onClick={handleSubmit}>Post</Button>
             </Form>
         </Container>
     );

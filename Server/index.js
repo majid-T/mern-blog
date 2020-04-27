@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
-const result = require('dotenv').config();
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-console.log(result);
 //DB Connection
 mongoose
     .connect(process.env.DB_URL,{
@@ -18,10 +17,21 @@ const port = process.env.PORT || 5000;
 app.listen(port,()=>console.log(`Server is running on port ${port}`));
 
 //middleware for json
-app.use(express.json);
+app.use(express.json());
+
+//for CORS
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept');
+    next();
+  });
 
 //Routes add
 const postsRoutes = require('./routes/Posts');
+app.get('/',(req,res,next)=>{
+    res.send('<h1>OK</h1>');
+})
+
 app.use('/api/posts',postsRoutes);
 
 // for 404 handeling
@@ -45,3 +55,5 @@ app.use(
         );
     }
 );
+
+console.log('server is now up!')

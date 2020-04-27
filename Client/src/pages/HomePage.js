@@ -7,7 +7,7 @@ function HomePage(){
 
     useEffect ( ()=>{
         axios
-        .get('http:localhost:5000/api/posts')
+        .get('http://localhost:5000/api/posts')
         .then((resonse)=>setPosts(resonse.data.posts))
         .catch((err)=>console.log(err));
     },[]);

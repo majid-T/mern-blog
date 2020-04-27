@@ -1,6 +1,7 @@
 const Post= require('../models/Post');
 
 const createPost = async (req,res,next)=>{
+    console.log('Call to create Post end point');
     const {title,body,author} = req.body;
     const newPost = new Post({title,body,author});
     try{
@@ -17,6 +18,7 @@ const createPost = async (req,res,next)=>{
 };
 
 const getAllPosts = async (req,res,next)=>{
+    console.log('Call to get all Posts end point');
     try{
         const posts = await Post.find({});
         res.send({
@@ -25,13 +27,14 @@ const getAllPosts = async (req,res,next)=>{
         });
 
     }catch(err){
-        const error = new Error('Problem creating the post');
+        const error = new Error('Problem getting posts');
         error.error = err;
         next(error);
     }
 };
 
 const getSinglePost = async (req,res,next)=>{
+    console.log('Call to get single Post end point');
     try{
         const post = await Post.findOne({_id:req.body.id});
         res.send({
