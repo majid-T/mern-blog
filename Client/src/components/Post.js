@@ -11,7 +11,7 @@ function Post(props){
                 <Card.Title>props.post.title</Card.Title>
                 <Card.Text>props.post.body</Card.Text>
                 <Link to={`/post/${props.post._id}`}>
-                    <Button variant="primary">See posst</Button>
+                    <Button variant="primary">See post</Button>
                 </Link>
             </Card.Body>
 
