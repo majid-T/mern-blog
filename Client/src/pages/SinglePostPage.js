@@ -8,9 +8,12 @@ function SinglePostPage(props){
 
     const postId = props.match.params.id;
     useEffect(()=>{
+        console.log(postId);
         axios
-        .get(`http:localhost:5000/api/posts/get/${postId}`)
-        .then((res)=>setPost(res.data.post))
+        .get(`http://localhost:5000/api/posts/get?id=${postId}`)
+        .then((res)=>{
+            console.log(res);
+            setPost(res.data.post)})
         .catch((err)=>console.log(err));
     },[postId]);
 

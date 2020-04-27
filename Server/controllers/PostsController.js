@@ -35,8 +35,9 @@ const getAllPosts = async (req,res,next)=>{
 
 const getSinglePost = async (req,res,next)=>{
     console.log('Call to get single Post end point');
+    console.log(req.query);
     try{
-        const post = await Post.findOne({_id:req.body.id});
+        const post = await Post.findOne({_id:req.query.id});
         res.send({
             message: 'Success! Post has been queried',
             post,
