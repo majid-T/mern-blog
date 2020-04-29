@@ -28,17 +28,17 @@ function CreatePost(props){
             <h1 className='mb-4'>Create Post</h1>
             <Form>
                 <Form.Group controlId='title'>
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label className='FormLabel'>Title</Form.Label>
                     <Form.Control type='text' placeholder='Post Title' value={formData.title} 
                     onChange={(e)=> setFormData({...formData,title:e.target.value})}/>
                 </Form.Group>
                 <Form.Group controlId='body'>
-                    <Form.Label>Body</Form.Label>
+                    <Form.Label className='FormLabel'>Body</Form.Label>
                     <Form.Control type='text' placeholder='Post Body' value={formData.body} 
                     onChange={(e)=> setFormData({...formData,body:e.target.value})}/>
                 </Form.Group>
                 <Form.Group controlId='author'>
-                    <Form.Label>Author</Form.Label>
+                    <Form.Label className='FormLabel'>Author</Form.Label>
                     <Form.Control type='text' placeholder='Post Author' value={formData.author} 
                     onChange={(e)=> setFormData({...formData,author:e.target.value})}/>
                 </Form.Group>
