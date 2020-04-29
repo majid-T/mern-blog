@@ -6,12 +6,12 @@ import {Link} from 'react-router-dom';
 
 function Post(props){
     return(
-        <Card style={{maxWidth: '500px'}} className='mx-auto mb-2'>
+        <Card style={{maxWidth: '70%'}} className='mx-auto mb-2'>
             <Card.Body>
-                <Card.Title>{props.post.title}</Card.Title>
+                <Card.Title className='PostTitle'>{props.post.title}</Card.Title>
                 <Card.Text>{props.post.body}</Card.Text>
                 <Link to={`/post/${props.post._id}`}>
-                    <Button variant="primary">See post</Button>
+                    <Button variant="primary" className='postDetailBtn'>See post</Button>
                 </Link>
             </Card.Body>
 
